@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
-import cn.exev.spring.demo.module5.constant.OrderConstants;
+import cn.exev.demo.constant.OrderConstants;
 import cn.hutool.core.util.IdUtil;
 import lombok.Data;
 

@@ -7,10 +7,12 @@ import cn.exev.demo.service.impl.AppointEateInPrintDetail;
 import cn.exev.demo.service.impl.AppointTakeAwayPrintDetail;
 import cn.exev.demo.service.impl.EateInPrintDetail;
 import cn.exev.demo.service.impl.TakeAwayPrintDetail;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-public class printDetailFactory {
+@Component
+public class PrintDetailFactory {
 
     /**
      * <li>DELIVERY 快递订单

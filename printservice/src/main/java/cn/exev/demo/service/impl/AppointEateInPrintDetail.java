@@ -51,23 +51,13 @@ public class AppointEateInPrintDetail implements PrintDetail {
 //        sb.append("下单时间：2015-04-09 13:01:22\n\n");
 //        sb.append("订单编号：1243435235353434342343\n");
         sb.append("----------------------\n");
-        sb.append("<FH><FW><table><tr><td>麻辣牛肉</td><td>x1</td><td>19</td></tr><tr><td></td><td></td><td></td></tr>" +
-                "<tr><td>极品鲜毛肚</td><td>x1</td><td>19</td></tr><tr><td></td><td></td><td></td></tr>" +
-                "<tr><td>精品千层肚测试测试测试测试测试 </td><td>x1</td><td>19</td></tr></table></FW></FH>\n");
         for(Object object : itemList){
             TbOrderItem item = (TbOrderItem) object;
             sb.append("<FH><FW><table><tr><td>"+item.getName()+"</td><td>x"+item.getQuantity()+"</td><td>"+item.getPrice()+"</td></tr><tr><td></td><td></td><td></td></tr></table></FW></FH>\n");
         }
         sb.append("----------------------\n");
-        sb.append("消费合计：57.00元\n\n");
+        sb.append("消费支付： "+tbOrder.getOrderTotalAmt()+"元\n");
         sb.append("实际支付：<FH><FW>32.00元</FW></FH>\n");
-        sb.append("----------------------\n");
-        sb.append("<FS>备注：测试测试测试测试测试</FS>\n");
-        sb.append("----------------------\n");
-        sb.append("----------#999完-------\n");
-        sb.append("----------------------\n");
-        sb.append("<right>消费支付： "+tbOrder.getOrderTotalAmt()+"元</right>\n");
-        sb.append("<right>实际支付：999元</right>\n");
 //        sb.append("<right>实际支付："+tbOrder.getOrderTotalAmt().subtract(orderPayment.getAmt())+"元</right>\n");
         sb.append("----------------------\n");
         sb.append("<FS>备注："+tbOrder.getRemark()+"</FS>\n\n");
