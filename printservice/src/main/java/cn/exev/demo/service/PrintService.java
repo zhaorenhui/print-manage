@@ -1,5 +1,7 @@
 package cn.exev.demo.service;
 
+import cn.exev.demo.entity.TbOrderPojo;
+import cn.exev.demo.factory.PrintDetailFactory;
 import cn.hutool.crypto.digest.DigestUtil;
 import org.apache.http.Consts;
 import org.apache.http.HttpEntity;
@@ -11,6 +13,7 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.client.RestTemplate;
 
 import java.nio.charset.StandardCharsets;
@@ -108,49 +111,10 @@ public class PrintService {
         exec(URI_GETSTATUS, params);
     }
 
-    public static void main(String[] args) {
-        print();
-    }
     //打印机打印消息
-    public static void print() {
-//        堂食后厨联
-        StringBuffer sb = new StringBuffer("");
-        sb.append("<FH2><FW2><FS2><center>后厨联</center></FS2></FW2></FH2>\n");
-        sb.append("<FH><FW><FS><center>#999 美食卡</center></FS></FW></FH>\n");
-        sb.append("----------------------\n");
-        sb.append("堂食     人数：2     桌号：999\n");
-        sb.append("----------------------\n");
-        sb.append("下单时间：2015-04-09 13:01:22\n");
-        sb.append("订单编号：1243435235353434342343\n");
-        sb.append("----------------------\n");
-        sb.append("麻辣牛肉    x1     19\n");
-        sb.append("极品鲜毛肚  x1     19\n");
-        sb.append("精品千层肚)    x1     19\n");
-//        sb.append("4.金针肥牛卷(1份)\n");
-//        sb.append("5.水晶牛肉(1份)\n");
-//        sb.append("6.一次性牛油红锅（中辣）(1份)\n");
-//        sb.append("7.干碟(1份)\n");
-//        sb.append("8.油碟(葱蒜香菜盐味精耗油醋、碗筷)(1份)\n");
-//        sb.append("9.鹌鹑蛋(1份)\n");
-//        sb.append("10.脆皮肠(1份)\n");
-//        sb.append("11.带鱼(1份)\n");
-//        sb.append("12.耗儿鱼(1份)\n");
-//        sb.append("13.金针菇(1份)\n");
-//        sb.append("14.豆皮(1份)\n");
-//        sb.append("15.冬瓜(1份)\n");
-//        sb.append("16.豆芽(1份)\n");
-//        sb.append("17.脆皮香蕉(1份)\n");
-//        sb.append("18.麻圆(1份)\n");
-//        sb.append("19.大唯怡(1份)\n");
-        sb.append("----------------------\n");
-        sb.append("<right>消费合计：57.00元</right>\n");
-        sb.append("<right>实际支付：<FS>32.00</FS>元</right>\n");
-        sb.append("----------------------\n");
-        sb.append("<FS2>备注：多啊芳的实际呢但是萨达</FS2>\n");
-        sb.append("----------------------\n");
-        sb.append("----------#999完-------\n");
-
-        System.out.println(sb.toString());
+    public void print(TbOrderPojo tbOrderPojo,PrintDetailFactory printDetailFactory) {
+        PrintDetail printDetail = printDetailFactory.createPrintDetail(tbOrderPojo);
+        String s = printDetail.print(tbOrderPojo);
 
         Map<String, String> params = new HashMap<String, String>();
         params.put("partner", partner);
@@ -159,10 +123,8 @@ public class PrintService {
 
         String sign = signRequest(params);
         params.put("sign", sign);
-        params.put("content", sb.toString());
-
+        params.put("content", s);
         exec(URI_PRINT, params);
-
     }
 
     /**

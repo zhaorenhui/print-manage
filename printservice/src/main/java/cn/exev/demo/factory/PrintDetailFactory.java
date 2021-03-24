@@ -2,6 +2,7 @@ package cn.exev.demo.factory;
 
 
 import cn.exev.demo.entity.TbOrder;
+import cn.exev.demo.entity.TbOrderPojo;
 import cn.exev.demo.service.PrintDetail;
 import cn.exev.demo.service.impl.AppointEateInPrintDetail;
 import cn.exev.demo.service.impl.AppointTakeAwayPrintDetail;
@@ -10,6 +11,8 @@ import cn.exev.demo.service.impl.TakeAwayPrintDetail;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+
+import static cn.exev.demo.constant.OrderConstants.ORDER_TYPE.*;
 
 @Component
 public class PrintDetailFactory {
@@ -24,7 +27,8 @@ public class PrintDetailFactory {
      * <li>EATE_IN 堂食
      * <li>TAKE_AWAY 外带
      */
-    public static PrintDetail createPrintDetail(TbOrder order, List itemList, List paymentList){
+    public static PrintDetail createPrintDetail(TbOrderPojo tbOrderPojo){
+        TbOrder order = tbOrderPojo.getTbOrder();
         PrintDetail printDetail = null;
         switch (order.getType()){
             case SWEET:

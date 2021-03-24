@@ -1,5 +1,7 @@
 package cn.exev.demo.config;
 
+import cn.exev.demo.entity.TbOrderPojo;
+import cn.exev.demo.factory.PrintDetailFactory;
 import cn.exev.demo.service.PrintService;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -14,7 +16,6 @@ public class PrintServiceAutoConfiguration {
 
 
     @Bean
-    @ConditionalOnBean(RestTemplate.class)
     @ConditionalOnMissingBean
     public PrintService service(RestTemplate restTemplate) {
         return new PrintService(restTemplate);
