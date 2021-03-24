@@ -28,7 +28,6 @@ public class EateInPrintDetail implements PrintDetail {
         sb.append("下单时间："+ DateUtil.format(order.getPayTime(),"yyyy-MM-dd HH:mm:ss")+"\n\n");
         sb.append("订单编号："+order.getCustomerId()+"\n");
         sb.append("----------------------\n");
-        sb.append("<FH><FW><table>");
         for(int i = 0 ; i < itemList.size() ; i++){
             TbOrderItem orderItem = (TbOrderItem) itemList.get(i);
             BigDecimal price = orderItem.getPrice();
@@ -36,15 +35,17 @@ public class EateInPrintDetail implements PrintDetail {
                 price = orderItem.getOriginalPrice();
             }
             BigDecimal quantity = new BigDecimal(orderItem.getQuantity());
-            sb.append("<tr><td>"+orderItem.getName()+"</td><td>x"+orderItem.getQuantity()+"</td><td>"+(price.multiply(quantity))+"</td></tr><tr><td></td><td></td><td></td></tr>");
+            sb.append("<FH><FW><table><tr><td>"+orderItem.getName()+"</td><td>x"+orderItem.getQuantity()+"</td><td>"+(price.multiply(quantity))+"</td></tr></table></FW></FH>\n");
         }
-        sb.append("</table></FW></FH>\n");
         sb.append("----------------------\n");
         sb.append("消费合计："+order.getOrderTotalAmt()+"元\n\n");
         sb.append("实际支付：<FH><FW>"+order.getOrderUserPay()+"元</FW></FH>\n");
         sb.append("----------------------\n");
-        sb.append("<FS>备注："+order.getRemark()+"</FS>\n");
-        sb.append("----------------------\n");
+        sb.append("<FS>备注：");
+        if(order.getRemark() != null && !order.getRemark().equals("")){
+            sb.append(order.getRemark());
+        }
+        sb.append("</FS>\n");
         sb.append("----------#"+order.getServiceNo()+"完-------\n");
 
         System.out.println(sb.toString());

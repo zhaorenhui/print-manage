@@ -55,7 +55,7 @@ public class TbOrderServiceImpl implements TbOrderService {
         tbOrder.setSeatNumber("999");
         tbOrder.setPlanConsumeTime(getDate("2021-3-12 12:50:00"));
         tbOrder.setCreateTime(getDate("2021-3-12 10:20:00"));
-        tbOrder.setRemark("多放辣椒，不放葱花和香菜");
+        //tbOrder.setRemark("多放辣椒，不放葱花和香菜");
         tbOrder.setCustomerId("123456789000123456");
         tbOrder.setOrderMobile("15236253288");
         tbOrder.setOrderTotalAmt(new BigDecimal(299));

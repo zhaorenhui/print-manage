@@ -23,13 +23,13 @@ public class FastPayPrintString implements PrintDetail {
         sb.append("<FS2><center>快捷买单</center></FS2>\n");
         sb.append("<FS2><center>#"+tbOrder.getServiceNo()+" 美食卡</center></FS2>\n");
         sb.append("----------------------\n");
-        sb.append("快捷买单           桌号："+tbOrder.getSeatNumber()+"\n\n");
+        sb.append("快捷买单           桌号："+tbOrder.getSeatNumber()+"\n");
         sb.append("----------------------\n");
-        sb.append("付款时间："+ DateUtil.format(tbOrder.getPayTime(),"yyyy-MM-dd HH:mm:ss")+"\n\n");
+        sb.append("付款时间："+ DateUtil.format(tbOrder.getPayTime(),"yyyy-MM-dd HH:mm:ss")+"\n");
         sb.append("订单编号："+tbOrder.getCustomerId()+"\n");
         sb.append("----------------------\n");
-        sb.append("酒水合计：0.00元\n\n");
-        sb.append("合计消费：<FH><FW>"+tbOrder.getOrderUserPay()+"元</FW></FH>\n\n");
+        sb.append("酒水合计：0.00元\n");
+        sb.append("合计消费：<FH><FW>"+tbOrder.getOrderUserPay()+"元</FW></FH>\n");
         sb.append("----------#"+tbOrder.getServiceNo()+"完-------\n");
 
         System.out.println(sb.toString());
