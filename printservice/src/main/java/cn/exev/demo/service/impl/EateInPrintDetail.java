@@ -23,7 +23,7 @@ public class EateInPrintDetail implements PrintDetail {
         sb.append("<FS2><center>后厨联</center></FS2>\n");
         sb.append("<FS2><center>#"+order.getServiceNo()+" 美食卡</center></FS2>\n");
         sb.append("----------------------\n");
-        sb.append("店内就餐     人数："+order.getDinnerNumber()+"     桌号："+order.getSeatNumber()+"\n\n");
+        sb.append("店内就餐  人数："+order.getDinnerNumber()+"  桌号："+order.getSeatNumber()+"\n\n");
         sb.append("----------------------\n");
         sb.append("下单时间："+ DateUtil.format(order.getPayTime(),"yyyy-MM-dd HH:mm:ss")+"\n\n");
         sb.append("订单编号："+order.getCustomerId()+"\n");

@@ -14,13 +14,43 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Dictionary;
 import java.util.List;
 
 @Service
 public class TbOrderServiceImpl implements TbOrderService {
-    public TbOrder selectById(String orderType) {
+    public TbOrder selectById( String orderType) {
         TbOrder tbOrder = new TbOrder();
-        tbOrder.setType(OrderConstants.ORDER_TYPE.EATE_IN);
+        switch (orderType){
+            case "SWEET":
+                tbOrder.setType(OrderConstants.ORDER_TYPE.SWEET);
+                break;
+            case "EATE_IN":
+                tbOrder.setType(OrderConstants.ORDER_TYPE.EATE_IN);
+                break;
+            case "DELIVERY"://快递订单放一放
+                tbOrder.setType(OrderConstants.ORDER_TYPE.DELIVERY);
+                break;
+            case "RECOMMEND":
+                tbOrder.setType(OrderConstants.ORDER_TYPE.RECOMMEND);
+                break;
+            case "QUALIFICATION":
+                tbOrder.setType(OrderConstants.ORDER_TYPE.QUALIFICATION);
+                break;
+            case "MILK_TEA":
+                tbOrder.setType(OrderConstants.ORDER_TYPE.MILK_TEA);;
+                break;
+            case "FAST_PAY":
+                tbOrder.setType(OrderConstants.ORDER_TYPE.FAST_PAY);
+                break;
+            case "TAKE_AWAY":
+                tbOrder.setType(OrderConstants.ORDER_TYPE.TAKE_AWAY);
+                break;
+            default:
+                //tbOrder.setType("");
+                tbOrder.setType(OrderConstants.ORDER_TYPE.DELIVERY);
+                break;
+        }
         tbOrder.setDinnerNumber(2);
         tbOrder.setSeatNumber("999");
         tbOrder.setPlanConsumeTime(getDate("2021-3-12 12:50:00"));
@@ -31,6 +61,8 @@ public class TbOrderServiceImpl implements TbOrderService {
         tbOrder.setOrderTotalAmt(new BigDecimal(299));
         tbOrder.setOrderUserPay(new BigDecimal(232));
         tbOrder.setServiceNo("23");
+        tbOrder.setPlanSettleAmt(new BigDecimal(300));
+        tbOrder.setPayTime(new Date());
         return tbOrder;
     }
 

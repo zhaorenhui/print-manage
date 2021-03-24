@@ -29,12 +29,13 @@ public class AppointEateInPrintDetail implements PrintDetail {
         sb.append("<FS2><center>#"+tbOrder.getServiceNo()+" 美食卡</center></FS2>\n");
         sb.append("<FS2><center>预约堂食</center></FS2>\n");
         sb.append("----------------------\n");
-        sb.append("预约堂食     人数："+tbOrder.getDinnerNumber()+"     取餐号："+tbOrder.getServiceNo()+"\n\n");
+        sb.append("预约堂食  人数："+tbOrder.getDinnerNumber()+"  取餐号："+tbOrder.getServiceNo()+"\n\n");
         sb.append("----------------------\n");
         sb.append("到店时间："+DateUtil.format(tbOrder.getPlanConsumeTime(),"yyyy-MM-dd HH:mm:ss")+"\n\n");
         sb.append("下单时间："+DateUtil.format(tbOrder.getPayTime(),"yyyy-MM-dd HH:mm:ss")+"\n\n");
         sb.append("订单编号："+tbOrder.getCustomerId()+"\n");
         sb.append("----------------------\n");
+        sb.append("<FH><FW><table>");
         for(int i = 0 ; i < itemList.size() ; i++){
             TbOrderItem orderItem = (TbOrderItem) itemList.get(i);
             BigDecimal price = orderItem.getPrice();
@@ -44,6 +45,7 @@ public class AppointEateInPrintDetail implements PrintDetail {
             BigDecimal quantity = new BigDecimal(orderItem.getQuantity());
             sb.append("<tr><td>"+orderItem.getName()+"</td><td>x"+orderItem.getQuantity()+"</td><td>"+(price.multiply(quantity))+"</td></tr><tr><td></td><td></td><td></td></tr>");
         }
+        sb.append("</table></FW></FH>\n");
         sb.append("----------------------\n");
         sb.append("消费合计："+tbOrder.getOrderTotalAmt()+"元\n\n");
         sb.append("实际支付：<FH><FW>"+tbOrder.getOrderUserPay()+"元</FW></FH>\n");
