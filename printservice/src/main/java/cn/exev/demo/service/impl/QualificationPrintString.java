@@ -41,8 +41,8 @@ public class QualificationPrintString implements PrintDetail {
         sb.append("</table></FW></FH>\n");
         sb.append("----------------------\n");
         sb.append("消费合计："+tbOrder.getOrderTotalAmt()+"元\n\n");
-        sb.append("商家收款："+tbOrder.getPlanSettleAmt()+"元\n\n");
-        sb.append("实际支付：<FH><FW>"+tbOrder.getOrderUserPay()+"元</FW></FH>\n");
+        //sb.append("商家收款："+tbOrder.getPlanSettleAmt()+"元\n\n");
+        sb.append("实际收款：<FH><FW>"+tbOrder.getPlanSettleAmt()+"元</FW></FH>\n");
         sb.append("----------------------\n");
         sb.append("<FS>备注："+tbOrder.getRemark()+"</FS>\n");
         sb.append("----------#"+tbOrder.getServiceNo()+"完-------\n");

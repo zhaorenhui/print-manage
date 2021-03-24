@@ -31,7 +31,9 @@ public class AppointEateInPrintDetail implements PrintDetail {
         sb.append("----------------------\n");
         sb.append("预约堂食  人数："+tbOrder.getDinnerNumber()+"  取餐号："+tbOrder.getServiceNo()+"\n\n");
         sb.append("----------------------\n");
-        sb.append("到店时间："+DateUtil.format(tbOrder.getPlanConsumeTime(),"yyyy-MM-dd HH:mm:ss")+"\n\n");
+        sb.append("<FH><FW>到店时间：</FW></FH>\n");
+        sb.append("<FH><FW>"+DateUtil.format(tbOrder.getPlanConsumeTime(),"yyyy-MM-dd HH:mm:ss")+"</FW></FH>\n\n");
+        sb.append("----------------------\n");
         sb.append("下单时间："+DateUtil.format(tbOrder.getPayTime(),"yyyy-MM-dd HH:mm:ss")+"\n\n");
         sb.append("订单编号："+tbOrder.getCustomerId()+"\n");
         sb.append("----------------------\n");
