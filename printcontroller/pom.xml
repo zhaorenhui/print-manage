@@ -25,9 +25,9 @@
             <version>2.4.4</version>
         </dependency>
         <dependency>
-            <groupId>lombok</groupId>
+            <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.0</version>
+            <version>1.16.18</version>
         </dependency>
         <dependency>
             <groupId>cn.exev</groupId>
