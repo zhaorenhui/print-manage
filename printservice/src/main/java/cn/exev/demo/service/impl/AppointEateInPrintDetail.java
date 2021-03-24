@@ -41,27 +41,25 @@ public class AppointEateInPrintDetail implements PrintDetail {
         //        堂食 后厨联
         StringBuffer sb = new StringBuffer("");
         sb.append("<FS2><center>后厨联</center></FS2>\n");
-        sb.append("<FS2><center>#"+tbOrder.getSeatNumber()+" 美食卡</center></FS2>\n");
+        sb.append("<FS2><center>#"+tbOrder.getServiceNo()+" 美食卡</center></FS2>\n");
         sb.append("----------------------\n");
         sb.append("堂食     人数："+tbOrder.getDinnerNumber()+"     桌号："+tbOrder.getSeatNumber()+"\n\n");
         sb.append("----------------------\n");
 //        sb.append("取餐时间："+ DateUtil.format(tbOrder.getPlanConsumeTime(),"yyyy-MM-dd HH:mm:ss")+"\n");
         sb.append("下单时间："+ DateUtil.format(tbOrder.getCreateTime(),"yyyy-MM-dd HH:mm:ss")+"\n");
         sb.append("订单编号："+tbOrder.getCustomerId()+"\n");
-//        sb.append("下单时间：2015-04-09 13:01:22\n\n");
-//        sb.append("订单编号：1243435235353434342343\n");
         sb.append("----------------------\n");
         for(Object object : itemList){
             TbOrderItem item = (TbOrderItem) object;
-            sb.append("<FH><FW><table><tr><td>"+item.getName()+"</td><td>x"+item.getQuantity()+"</td><td>"+item.getPrice()+"</td></tr><tr><td></td><td></td><td></td></tr></table></FW></FH>\n");
+            Long sumPrice = (item.getBenefit()!=null&&!item.getBenefit().equals(""))? item.getOriginalPrice().longValue()*item.getQuantity():item.getPrice().longValue()*item.getQuantity();
+            sb.append("<FH><FW><table><tr><td>"+item.getName()+"</td><td>x"+item.getQuantity()+"</td><td>"+sumPrice+"</td></tr><tr><td></td><td></td><td></td></tr></table></FW></FH>\n");
         }
         sb.append("----------------------\n");
         sb.append("消费支付： "+tbOrder.getOrderTotalAmt()+"元\n");
-        sb.append("实际支付：<FH><FW>32.00元</FW></FH>\n");
-//        sb.append("<right>实际支付："+tbOrder.getOrderTotalAmt().subtract(orderPayment.getAmt())+"元</right>\n");
+        sb.append("实际支付：<FH><FW>"+tbOrder.getOrderUserPay()+"元</FW></FH>\n");
         sb.append("----------------------\n");
         sb.append("<FS>备注："+tbOrder.getRemark()+"</FS>\n\n");
-        sb.append("*********#"+tbOrder.getSeatNumber()+"完*******\n");
+        sb.append("*********#"+tbOrder.getServiceNo()+"完*******\n");
 
 
         System.out.println(sb.toString());

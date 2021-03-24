@@ -28,7 +28,9 @@ public class TbOrderServiceImpl implements TbOrderService {
         tbOrder.setRemark("多放辣椒，不放葱花和香菜");
         tbOrder.setCustomerId("123456789000123456");
         tbOrder.setOrderMobile("15236253288");
-        tbOrder.setOrderTotalAmt(new BigDecimal(57));
+        tbOrder.setOrderTotalAmt(new BigDecimal(299));
+        tbOrder.setOrderUserPay(new BigDecimal(232));
+        tbOrder.setServiceNo("23");
         return tbOrder;
     }
 
@@ -38,12 +40,15 @@ public class TbOrderServiceImpl implements TbOrderService {
             TbOrderItem orderItem = new TbOrderItem();
             if(i == 0){
                 orderItem.setName("南瓜松糕");
+                orderItem.setQuantity(1);
             }else if(i == 1){
                 orderItem.setName("奶香大馒头");
+                orderItem.setQuantity(3);
             }else if(i == 2){
                 orderItem.setName("小份地锅鸡（微辣 娃娃菜）");
+                orderItem.setQuantity(2);
             }
-            orderItem.setQuantity(1);
+//            orderItem.setQuantity(1);
             orderItem.setPrice(new BigDecimal(19));
             list.add(orderItem);
         }
