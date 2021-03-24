@@ -105,12 +105,7 @@ public class TbOrder implements Serializable {
     private String verifyQrcode;
 
     /**
-     * 服务号/取餐码
-     */
-    private String serviceNo;
-
-    /**
-     * 核销码
+     * 核销码/取餐码
      */
     private String verifyCode;
 
