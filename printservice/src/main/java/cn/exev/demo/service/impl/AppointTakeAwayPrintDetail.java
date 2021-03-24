@@ -7,6 +7,7 @@ import cn.exev.demo.entity.TbOrderItem;
 import cn.exev.demo.entity.TbOrderPayment;
 import cn.exev.demo.entity.TbOrderPojo;
 import cn.exev.demo.service.PrintDetail;
+import cn.hutool.core.date.DateUtil;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -26,10 +27,10 @@ public class AppointTakeAwayPrintDetail implements PrintDetail {
         sb.append("<FS2><center>#"+tbOrder.getServiceNo()+" 美食卡</center></FS2>\n");
         sb.append("<FS2><center>预约外带</center></FS2>\n");
         sb.append("----------------------\n");
-        sb.append("打包外带   人数："+tbOrder.getDinnerNumber()+"    桌号："+tbOrder.getSeatNumber()+"\n\n");
+        sb.append("预约外带   人数："+tbOrder.getDinnerNumber()+"    取餐号："+tbOrder.getServiceNo()+"\n\n");
         sb.append("----------------------\n");
-        sb.append("取餐时间："+tbOrder.getPlanConsumeTime()+"\n\n");
-        sb.append("下单时间："+tbOrder.getCreateTime()+"\n\n");
+        sb.append("取餐时间："+ DateUtil.format(tbOrder.getPlanConsumeTime(),"yyyy-MM-dd HH:mm:ss")+"\n\n");
+        sb.append("下单时间："+ DateUtil.format(tbOrder.getPayTime(),"yyyy-MM-dd HH:mm:ss")+"\n\n");
         sb.append("订单编号："+tbOrder.getCustomerId()+"\n");
         sb.append("----------------------\n");
         sb.append("<FH><FW><table>");
