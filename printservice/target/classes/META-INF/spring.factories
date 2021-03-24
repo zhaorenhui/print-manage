@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+cn.exev.spring.demo.module7.config.Module7AutoConfig
